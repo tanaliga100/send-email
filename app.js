@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 
 // Controllers
-const sendEmailController = require("./controllers/sendEmail");
+const sendEmail = require("./controllers/sendEmail");
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -17,8 +17,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("<h1>Email Project</h1> <a href='/send'> Send Email</a>");
 });
+app.get("/send", sendEmail);
 
-app.get("/send", sendEmailController);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
